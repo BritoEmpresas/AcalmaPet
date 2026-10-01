@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- CABEÇALHO: configurações da página, fontes, CSS e metadados ficam aqui. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Produtos — AcalmaPet
+    </title>
+    <meta name="description" content="Confira todos os produtos disponíveis na AcalmaPet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/products.css">
+  </head>
+  <body>
+    <!-- CORPO DA PÁGINA: todo o conteúdo visual do site começa aqui. -->
+    <div class="topbar">
+      🚚 Frete grátis acima de R$ 199
+      <span>
+        •
+      </span>
+      Entrega rápida na sua região
+    </div>
+    <header class="header">
+      <a class="logo" href="index.html" aria-label="AcalmaPet">
+        <img class="logo-image" src="Imagens/Logotipo.SVG.svg" alt="AcalmaPet">
+      </a>
+      <div class="search">
+        <span>
+          ⌕
+        </span>
+        <input id="searchInput" placeholder="O que você está procurando?">
+        <button onclick="searchProducts()">
+          Buscar
+        </button>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="openLogin()">
+          👤
+          <small>
+            Entrar
+          </small>
+        </button>
+        <button class="cart-btn" onclick="openCart()">
+          🛒
+          <b id="cartCount">
+            0
+          </b>
+        </button>
+      </div>
+    </header>
+    <nav class="nav">
+      <a href="index.html#categorias">
+        Categorias
+      </a>
+      <a href="products.html?cat=Ração">
+        Rações
+      </a>
+      <a href="products.html?cat=Petisco">
+        Petiscos
+      </a>
+      <a href="products.html?cat=Brinquedo">
+        Brinquedos
+      </a>
+      <a href="products.html?cat=Higiene">
+        Higiene
+      </a>
+      <a href="products.html?cat=Acessório">
+        Acessórios
+      </a>  
+    </nav>
+    <main>
+      <section class="products-hero">
+        <div>
+          <span class="pill">
+            CATÁLOGO ACALMAPET
+          </span>
+          <h1>
+            Produtos para cuidar,
+            <br>
+            <em>
+              brincar e mimar.
+            </em>
+          </h1>
+          <p>
+            Encontre tudo para cães e gatos em um só lugar.
+          </p>
+        </div>
+        <div class="products-hero-art">
+          <!-- BANNER DE IMAGEM: substitua o arquivo abaixo pela sua imagem.
+               Mantenha o nome/pasta para não precisar alterar o código. -->
+          <img src="Banners/banner catalogo svg.webp" alt="Banner do catálogo AcalmaPet">
+        </div>
+      </section>
+      <section class="section products-page-section">
+        <div class="product-toolbar">
+          <div>
+            <span class="eyebrow">
+              NOSSO CATÁLOGO
+            </span>
+            <h2>
+              Todos os produtos
+            </h2>
+            <p id="productSummary" class="muted">
+            </p>
+          </div>
+          <div class="product-filters">
+            <button class="filter-chip active" data-cat="Todos" onclick="filterProductsPage('Todos', this)">
+              Todos
+            </button>
+            <button class="filter-chip" data-cat="Ração" onclick="filterProductsPage('Ração', this)">
+              Rações
+            </button>
+            <button class="filter-chip" data-cat="Petisco" onclick="filterProductsPage('Petisco', this)">
+              Petiscos
+            </button>
+            <button class="filter-chip" data-cat="Brinquedo" onclick="filterProductsPage('Brinquedo', this)">
+              Brinquedos
+            </button>
+            <button class="filter-chip" data-cat="Higiene" onclick="filterProductsPage('Higiene', this)">
+              Higiene
+            </button>
+            <button class="filter-chip" data-cat="Acessório" onclick="filterProductsPage('Acessório', this)">
+              Acessórios
+            </button>
+          </div>
+        </div>
+        <div id="productGrid" class="product-grid product-grid-page">
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-main">
+        <div>
+          <a class="logo" href="index.html" aria-label="AcalmaPet">
+            <img class="logo-image" src="Imagens/Lg-rodape.svg" alt="AcalmaPet">
+          </a>
+          <p>
+            Um lugar feito para quem ama seus pets.
+          </p>
+        </div>
+        <div>
+          <h4>
+            Loja
+          </h4>
+          <a href="products.html">
+            Produtos
+          </a>
+          <a href="index.html#categorias">
+            Categorias
+          </a>
+          <a href="#">
+            Ofertas
+          </a>
+        </div>
+        <div>
+          <h4>
+            Atendimento
+          </h4>
+          <a href="#">
+            WhatsApp
+          </a>
+          <a href="#">
+            Contato
+          </a>
+          <a href="#">
+            Trocas e devoluções
+          </a>
+        </div>
+        <div>
+          <h4>
+            Empresa
+          </h4>
+          <a href="#">
+            Quem somos
+          </a>
+          <a href="#">
+            Privacidade
+          </a>
+          <a href="#">
+            Termos de uso
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 AcalmaPet. Projeto independente inspirado em padrões de e-commerce pet.
+      </div>
+    </footer>
+    <div id="cartModal" class="modal hidden">
+      <div class="modal-card">
+        <button class="close" onclick="closeModal('cartModal')">
+          ×
+        </button>
+        <h2>
+          Seu carrinho
+        </h2>
+        <div id="cartItems">
+        </div>
+        <div class="cart-total">
+          <span>
+            Total
+          </span>
+          <strong id="cartTotal">
+            R$ 0,00
+          </strong>
+        </div>
+        <button class="btn btn-dark full" onclick="checkout()">
+          Finalizar pedido
+        </button>
+      </div>
+    </div>
+    <!-- ETAPA DE CHECKOUT: o cliente chega aqui depois de clicar em "Finalizar pedido". -->
+    <div id="checkoutModal" class="modal hidden">
+      <div class="modal-card checkout-card">
+        <button class="close" onclick="closeModal('checkoutModal')">×</button>
+        <span class="eyebrow">FINALIZAÇÃO DO PEDIDO</span>
+        <h2>Confira seu pedido</h2>
+
+        <div id="checkoutItems" class="checkout-items"></div>
+
+        <div class="coupon-box">
+          <label for="couponInput">Tem um cupom de desconto?</label>
+          <div class="coupon-row">
+            <input id="couponInput" class="field" placeholder="Ex.: PET15" maxlength="30" autocomplete="off">
+            <button id="applyCouponBtn" class="btn btn-dark" onclick="applyCoupon()">Usar cupom</button>
+          </div>
+          <small id="couponMessage" class="coupon-message">Use PET15 para ganhar 15% OFF.</small>
+        </div>
+
+        <div class="checkout-summary">
+          <div><span>Subtotal</span><strong id="checkoutSubtotal">R$ 0,00</strong></div>
+          <div><span>Desconto</span><strong id="checkoutDiscount">R$ 0,00</strong></div>
+          <div class="checkout-total"><span>Total</span><strong id="checkoutTotal">R$ 0,00</strong></div>
+        </div>
+
+        <button class="btn btn-dark full" onclick="finishOrder()">Continuar para pagamento</button>
+      </div>
+    </div>
+    <div id="loginModal" class="modal hidden">
+      <div class="modal-card small">
+        <button class="close" onclick="closeModal('loginModal')">
+          ×
+        </button>
+        <h2>
+          Entrar
+        </h2>
+        <input class="field" placeholder="E-mail">
+        <input class="field" type="password" placeholder="Senha">
+        <button class="btn btn-dark full">
+          Entrar
+        </button>
+        <p class="muted">
+          Autenticação Firebase pode ser ativada em
+          <b>
+            js/firebase.js
+          </b>
+          .
+        </p>
+      </div>
+    </div>
+    <!-- JAVASCRIPT: este arquivo adiciona comportamento e interatividade à página. -->
+    <script src="js/firebase.js">
+    </script>
+    <script src="js/app.js">
+    </script>
+  </body>
+</html>
